@@ -1,4 +1,4 @@
-import {FETCH_BOOKS_REQUEST, FETCH_BOOKS_FAILURE, FETCH_BOOKS_SUCCESS} from '../constants/actionTypes'
+import {FETCH_AUTO_SUGGEST_REQUEST, FETCH_AUTO_SUGGEST_FAILURE, FETCH_AUTO_SUGGEST_SUCCESS} from '../constants/actionTypes'
 
 const initialState = {
 	items: [],
@@ -7,17 +7,17 @@ const initialState = {
 
 export default function(state = initialState, action) {
 	switch (action.type) {
-		case FETCH_BOOKS_SUCCESS:
+		case FETCH_AUTO_SUGGEST_SUCCESS:
 			return Object.assign({}, state, {
-				items: action.items,
+				items: action.items[1].map(item => item[0]),
 				isSearching: false
 			})
 		return state
-		case FETCH_BOOKS_REQUEST:
+		case FETCH_AUTO_SUGGEST_REQUEST:
 			return Object.assign({}, state, {
 				isSearching: true
 			})
-		case FETCH_BOOKS_FAILURE:
+		case FETCH_AUTO_SUGGEST_FAILURE:
 			return Object.assign({}, state, {
 				isSearching: false
 			})

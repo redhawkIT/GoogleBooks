@@ -9,8 +9,8 @@ class SearchBar extends Component {
     text: ''
   }
 
-  componentWillReceiveProps({items}) {
-    console.log(items)
+  componentWillReceiveProps({books, google}) {
+    console.log(books, google)
   }
 
   handleSuccessReq(login, name) {
@@ -21,7 +21,7 @@ class SearchBar extends Component {
     browserHistory.push(`/${url}`)
   }
 
-  handleUpdateInput = (value) => this.setState({text: value.slice(0, 50)})
+  handleUpdateInput = (value) => value && this.props.googleAutoSuggest(value.slice(0, 50))
 
   handleRequest = (query) => {
     this.props.requestSearch(query)
@@ -30,12 +30,13 @@ class SearchBar extends Component {
 
 
   render() {
+    const {items} = this.props.google
 
     return (
       <AutoComplete
         hintText='Search'
         filter={AutoComplete.fuzzyFilter}
-        dataSource={[1,2,3]}
+        dataSource={items}
         searchText={this.state.text}
         maxSearchResults={10}
         onNewRequest={this.handleRequest}
