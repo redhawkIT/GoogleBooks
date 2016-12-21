@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {FETCH_BOOKS_REQUEST,FETCH_BOOKS_FAILURE, FETCH_BOOKS_SUCCESS} from '../constants/actionTypes'
+import {FETCH_BOOKS_REQUEST, FETCH_BOOKS_FAILURE, FETCH_BOOKS_SUCCESS} from '../constants/actionTypes'
 //https://www.googleapis.com/books/v1/volumes?q=halo&maxResults=40
 
 export const booksRequest = () => {
@@ -20,10 +20,11 @@ export const booksRequestSuccess = items => {
     items
   }
 }
+
 export const requestSearch = keyword => {
   return dispatch => {
     dispatch(booksRequest())
-    axios.get('https://www.googleapis.com/books/v1/volumes?q=' + keyword)
+    axios.get('https://www.googleapis.com/books/v1/volumes?maxResults=40&q=' + keyword)
     .then(response => {
       if (response.data.items.length) {
         dispatch(booksRequestSuccess(response.data.items))
