@@ -9,7 +9,9 @@ class SearchBar extends Component {
     text: ''
   }
 
-  componentWillReceiveProps() {}
+  componentWillReceiveProps({items}) {
+    console.log(items)
+  }
 
   handleSuccessReq(login, name) {
     const url = `${login}/${name}`
@@ -21,7 +23,8 @@ class SearchBar extends Component {
 
   handleUpdateInput = (value) => this.setState({text: value.slice(0, 50)})
 
-  handleRequest = () => {
+  handleRequest = (query) => {
+    this.props.requestSearch(query)
     this.setState({text: ''})
   }
 

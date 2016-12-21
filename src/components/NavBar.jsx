@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import IconButton from 'material-ui/IconButton'
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
 import Menu from 'material-ui/svg-icons/navigation/menu'
-// import SmartSearchBar from '../containers/SmartSearchBar'
+import SmartSearchBar from '../containers/SmartSearchBar'
 
 const NavBar = ({title, handleToggle, toggleSnackBar}) => (
   <Toolbar>
@@ -11,7 +11,7 @@ const NavBar = ({title, handleToggle, toggleSnackBar}) => (
       <IconButton onTouchTap={handleToggle}><Menu/></IconButton>
       <ToolbarTitle text={title}/>
     </ToolbarGroup>
-    {/* <SmartSearchBar/> */}
+    <SmartSearchBar/>
     <ToolbarGroup lastChild={true}>
       <RaisedButton
         primary={true}
