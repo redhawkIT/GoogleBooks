@@ -12,7 +12,6 @@ export default function(state = initialState, action) {
 				items: action.items[1].map(item => item[0]),
 				isSearching: false
 			})
-		return state
 		case FETCH_AUTO_SUGGEST_REQUEST:
 			return Object.assign({}, state, {
 				isSearching: true

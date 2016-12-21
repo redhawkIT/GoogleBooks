@@ -12,7 +12,6 @@ export default function(state = initialState, action) {
 				items: action.items,
 				isSearching: false
 			})
-		return state
 		case FETCH_BOOKS_REQUEST:
 			return Object.assign({}, state, {
 				isSearching: true

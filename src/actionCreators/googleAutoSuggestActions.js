@@ -1,7 +1,6 @@
 import JSONP from 'jsonp'
 import {FETCH_AUTO_SUGGEST_REQUEST, FETCH_AUTO_SUGGEST_FAILURE, FETCH_AUTO_SUGGEST_SUCCESS} from '../constants/actionTypes'
 
-const KEY = 'AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU'
 const googleAutoSuggestURL = 'http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&q='
 
 const request = () => {
