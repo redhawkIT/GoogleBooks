@@ -5,9 +5,9 @@ import React from 'react'
 import rootReducer from './reducers'
 import routes from './routes'
 import theme from './material_ui_raw_theme_file'
-
+import thunkMiddleware from 'redux-thunk'
 import {browserHistory, Router} from 'react-router'
-import {createStore } from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {render} from 'react-dom'
 
@@ -18,7 +18,10 @@ const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVT
 
 const store = createStore(
   rootReducer,
-  reduxDevtools
+  reduxDevtools,
+  applyMiddleware(
+    thunkMiddleware
+  )
 )
 
 const Root = () => (
