@@ -3,39 +3,36 @@ import React, {Component} from 'react'
 import NavBar from './NavBar'
 import SlideDrawer from './SlideDrawer'
 import ContactSnackbar from './ContactSnackbar'
+import BookList from './BookList'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isSlideDrawer: false,
-      title: 'Home',
-      isSnackBar: false
+    state = {
+      title: 'Home'
     }
-  }
 
-
-  handleToggle = () => this.setState({isSlideDrawer: !this.state.isSlideDrawer})
-  toggleSnackBar = () => this.setState({isSnackBar: !this.state.isSnackBar})
   setTitle = title => this.setState({title})
 
   render() {
-    const {title, isSlideDrawer, isSnackBar} = this.state
+    console.log(this.props)
+    const {isSlideDrawerOpen, isSnackBarOpen} = this.props.ui
+    const {title} = this.state
     return (
       <div>
-        <ContactSnackbar isOpen={isSnackBar} toggle={this.toggleSnackBar}/>
+        <ContactSnackbar isOpen={isSnackBarOpen} toggle={this.props.toggleSnackBar}/>
         <NavBar
-          handleToggle={this.handleToggle}
+          handleToggle={this.props.toggleSlideDrawer}
           title={title}
-          toggleSnackBar={this.toggleSnackBar}
+          toggleSnackBar={this.props.toggleSnackBar}
         />
 
         <SlideDrawer
-          handleToggle={this.handleToggle}
-          open={isSlideDrawer}
+          handleToggle={this.props.toggleSlideDrawer}
+          open={isSlideDrawerOpen}
           setTitle={this.setTitle}
         />
+
+        <BookList/>
 
         { /* child component will be rendered here */ }
         {this.props.children}

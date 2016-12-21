@@ -1,4 +1,4 @@
-import {TOGGLE_SLIDE_DRAWER, NAVBAR_TITLE, REPO_URL} from '../constants/actionTypes'
+import {TOGGLE_SLIDE_DRAWER, TOGGLE_SNACK_BAR} from '../constants/actionTypes'
 
 /*
   Things you should never do inside a reducer
@@ -9,27 +9,22 @@ import {TOGGLE_SLIDE_DRAWER, NAVBAR_TITLE, REPO_URL} from '../constants/actionTy
 
 const initialState = {
   isSlideDrawerOpen: false,
-  navTitle: '',
-  repoURL: ''
+  isSnackBarOpen: false,
+  navTitle: ''
 }
 
 function ui(state = initialState, action) {
 
   switch (action.type) {
-    case REPO_URL:
-      return {
-        ...state,
-        repoURL: action.repoURL
-      }
     case TOGGLE_SLIDE_DRAWER:
       return {
         ...state,
         isSlideDrawerOpen: !state.isSlideDrawerOpen
       }
-      case NAVBAR_TITLE:
+    case TOGGLE_SNACK_BAR:
       return {
         ...state,
-        navTitle: action.navTitle
+        isSnackBarOpen: !state.isSnackBarOpen
       }
     default:
       return state
